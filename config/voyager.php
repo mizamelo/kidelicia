@@ -32,7 +32,7 @@ return [
     */
 
     'controllers' => [
-        'namespace' => 'TCG\\Voyager\\Http\\Controllers',
+        'namespace' => 'App\\Http\\Controllers\\Voyager',
     ],
 
     /*
@@ -114,7 +114,7 @@ return [
         /*
          * Set whether or not the multilingual is supported by the BREAD input.
          */
-        'enabled' => false,
+        'enabled' => true,
 
         /*
          * Set whether or not the admin layout default is RTL.
@@ -124,14 +124,14 @@ return [
         /*
          * Select default language
          */
-        'default' => 'en',
+        'default' => 'pt_BR',
 
         /*
          * Select languages that are supported.
          */
         'locales' => [
             'en',
-            //'pt',
+            'pt_BR',
         ],
     ],
 
@@ -201,13 +201,13 @@ return [
     |
     */
 
-    'primary_color' => '#22A7F0',
+    'primary_color' => '#850002',
 
     'show_dev_tips' => true, // Show development tip "How To Use:" in Menu and Settings
 
     // Here you can specify additional assets you would like to be included in the master.blade
     'additional_css' => [
-        //'css/custom.css',
+        'css/custom.css',
     ],
 
     'additional_js' => [
@@ -215,7 +215,7 @@ return [
     ],
 
     'googlemaps' => [
-         'key'    => env('GOOGLE_MAPS_KEY', ''),
+         'key'    => env('GOOGLE_MAPS_KEY', 'AIzaSyDkpGEbGNPFsavPaLqly4B3hme0SJoMIPg'),
          'center' => [
              'lat' => env('GOOGLE_MAPS_DEFAULT_CENTER_LAT', '32.715738'),
              'lng' => env('GOOGLE_MAPS_DEFAULT_CENTER_LNG', '-117.161084'),
