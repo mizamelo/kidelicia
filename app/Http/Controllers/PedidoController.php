@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PedidoController extends Controller
+use TCG\Voyager\Http\Controllers\VoyagerBaseController as BaseVoyagerBaseController;
+
+class PedidoController extends BaseVoyagerBaseController
 {
     //
 }
