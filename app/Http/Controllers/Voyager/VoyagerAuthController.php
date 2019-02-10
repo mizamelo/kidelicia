@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use TCG\Voyager\Facades\Voyager;
 
 class VoyagerAuthController extends BaseVoyagerAuthController
-{git add .
+{
     use AuthenticatesUsers;
 
     public function login()
