@@ -3,7 +3,7 @@
 @section('page_title', __('voyager::generic.view').' '.$dataType->display_name_singular)
 
 @section('page_header')
-    <h1 class="page-title">
+    <h1 class="page-title" style="padding-left: 15px;">
         {{--removido title--}}
         {{--<i class="{{ $dataType->icon }}"></i> {{ __('voyager::generic.viewing') }} {{ ucfirst($dataType->display_name_singular) }} &nbsp;--}}
 
@@ -22,6 +22,11 @@
         <a href="{{ route('voyager.'.$dataType->slug.'.index') }}" class="btn btn-warning">
             <span class="glyphicon glyphicon-list"></span>&nbsp;
             {{ __('voyager::generic.return_to_list') }}
+        </a>
+
+        <a href="{{ route('gerar_comanda') ."/". $dataTypeContent->getKey() }}" class="btn btn-inverse">
+            <span class="glyphicon glyphicon-pencil"></span>&nbsp;
+            Gerar Comanda
         </a>
     </h1>
     @include('voyager::multilingual.language-selector')

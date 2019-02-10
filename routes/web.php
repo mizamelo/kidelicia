@@ -26,6 +26,8 @@ Route::group(['prefix' => 'admin'], function () {
         return redirect()->route('/admin/pedidos');
     });
 
+    Route::get('gerar_comanda', 'PedidoController@gerar_comanda')->name('gerar_comanda');
+
     Voyager::routes();
 
 
