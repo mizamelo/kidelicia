@@ -12,11 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('admin/pedidos');
 });
 
 
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', function () {
+        return redirect('admin/pedidos');
+    });
     Voyager::routes();
+
+
 });
 
