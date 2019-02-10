@@ -44,7 +44,7 @@
                     <li class="profile-img">
                         {{--<img src="{{ $user_avatar }}" class="profile-img">--}}
                         <div class="profile-body">
-                            <h5>{{ Auth::user()->name }}</h5>
+                            {{--<p>{{ Auth::user()->name }}</p>--}}
                             <h6>{{ Auth::user()->email }}</h6>
                         </div>
                     </li>
