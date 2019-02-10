@@ -9,4 +9,5 @@ return  [
     ['code' => 5, 'message' => 'token absent'],
     ['code' => 6, 'message' => 'user not found'],
     ['code' => 7, 'message' => 'validation error'],
+    ['code' => 8, 'message' => 'inative user'],
 ];

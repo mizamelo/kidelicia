@@ -27,6 +27,10 @@ class UserController extends Controller
 
         $User = Auth::user();
 
+        if($User->status == "inativo") {
+            return response()->json(config('status.8'), 200);
+        }
+
         $code = 0;
 
         $User->avatar = "/storage/" . $User->avatar;
