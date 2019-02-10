@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Estabelecimento extends Model
 {
+    use SoftDeletes;
+
    protected $fillable = [
         'nome',
         'comprador',

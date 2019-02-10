@@ -30,6 +30,7 @@ class UserController extends Controller
         $code = 0;
 
         $User->avatar = "/storage/" . $User->avatar;
+        $User->role_id = $User->role_id == 2 ? "Vendedor" : ($User->role_id == 3 ? "Gestor" : "Desconhecido");
 
         return response()->json(compact('code','token', 'User'));
     }
