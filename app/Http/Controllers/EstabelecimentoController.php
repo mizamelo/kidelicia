@@ -46,7 +46,7 @@ class EstabelecimentoController extends BaseVoyagerBaseController
 
     public function estabelecimentos(){
         $data = config('status.0');
-        $data['estabelecimentos'] = Estabelecimento::all();
+        $data['estabelecimentos'] = Estabelecimento::orderBy('nome', 'ASC')->get();
 
         return response()->json($data, 200);
     }
