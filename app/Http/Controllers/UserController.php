@@ -58,7 +58,7 @@ class UserController extends Controller
         return response()->json(compact('user','token'),201);
     }
 
-    public function getAuthenticatedUser()
+    public static function getAuthenticatedUser()
     {
         try {
 
@@ -80,6 +80,6 @@ class UserController extends Controller
 
         }
 
-        return response()->json(compact('user'), 200);
+        return $user;
     }
 }

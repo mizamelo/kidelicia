@@ -25,6 +25,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::get('closed', 'DataController@closed');
     Route::get('estabelecimentos', 'EstabelecimentoController@estabelecimentos');
+    Route::get('pedidos', 'PedidoController@pedidos');
     Route::post('novo_estabelecimento', 'EstabelecimentoController@new_estabelecimento');
     Route::post('novo_pedido', 'PedidoController@new_pedido');
 });

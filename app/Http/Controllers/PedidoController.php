@@ -44,5 +44,17 @@ class PedidoController extends BaseVoyagerBaseController
         }
     }
 
+    public function pedidos(){
+
+        $user = UserController::getAuthenticatedUser();
+
+        $data = config('status.0');
+
+        $data['pedidos'] = Pedido::where('id_usuario', $user->id)->get();
+
+        return response()->json($data);
+
+    }
+
 
 }
