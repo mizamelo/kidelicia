@@ -73,15 +73,15 @@
                                     <option value="2">Vendedor</option>
                                 </select>
                             </div>
-
-                            <div class="form-group">
-                                <label for="status">Status</label>
-                                <select name="status" class="form-control" id="status">
-                                    <option selected value="@if(isset($dataTypeContent->status)){{ $dataTypeContent->status }}@endif">{{ $dataTypeContent->status }}</option>
-                                    <option value="ativo">Ativo</option>
-                                    <option value="inativo">Inativo</option>
-                                </select>
-                            </div>
+{{--REMOVIDO STATUS--}}
+                            {{--<div class="form-group">--}}
+                                {{--<label for="status">Status</label>--}}
+                                {{--<select name="status" class="form-control" id="status">--}}
+                                    {{--<option selected value="@if(isset($dataTypeContent->status)){{ $dataTypeContent->status }}@endif">{{ $dataTypeContent->status }}</option>--}}
+                                    {{--<option value="ativo">Ativo</option>--}}
+                                    {{--<option value="inativo">Inativo</option>--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
 
                             @php
                             if (isset($dataTypeContent->locale)) {
