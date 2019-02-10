@@ -105,16 +105,17 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="panel panel panel-bordered panel-warning">
-                        <div class="panel-body">
-                            <div class="form-group">
-                                @if(isset($dataTypeContent->avatar))
-                                    <img src="{{ filter_var($dataTypeContent->avatar, FILTER_VALIDATE_URL) ? $dataTypeContent->avatar : Voyager::image( $dataTypeContent->avatar ) }}" style="width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;" />
-                                @endif
-                                <input type="file" data-name="avatar" name="avatar">
-                            </div>
-                        </div>
-                    </div>
+                    {{--REMOVIDO AVATAR--}}
+                    {{--<div class="panel panel panel-bordered panel-warning">--}}
+                        {{--<div class="panel-body">--}}
+                            {{--<div class="form-group">--}}
+                                {{--@if(isset($dataTypeContent->avatar))--}}
+                                    {{--<img src="{{ filter_var($dataTypeContent->avatar, FILTER_VALIDATE_URL) ? $dataTypeContent->avatar : Voyager::image( $dataTypeContent->avatar ) }}" style="width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;" />--}}
+                                {{--@endif--}}
+                                {{--<input type="file" data-name="avatar" name="avatar">--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </div>
             </div>
 
