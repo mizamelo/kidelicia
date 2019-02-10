@@ -36,14 +36,17 @@
                         @if ($isServerSide)
                             <form method="get" class="form-search">
                                 <div id="search-input">
-                                    <select id="search_key" name="key">
+                                    {{--OCULTO--}}
+                                    <select id="search_key" name="key" class="hidden">
+                                            <option value="name" selected>Nome</option>
                                         @foreach($searchable as $key)
-                                            <option value="{{ $key }}" @if($search->key == $key || $key == $defaultSearchKey){{ 'selected' }}@endif>{{ ucwords(str_replace('_', ' ', $key)) }}</option>
+                                            {{--<option value="{{ $key }}" @if($search->key == $key || $key == $defaultSearchKey){{ 'selected' }}@endif>{{ ucwords(str_replace('_', ' ', $key)) }}</option>--}}
                                         @endforeach
                                     </select>
-                                    <select id="filter" name="filter">
-                                        <option value="contains" @if($search->filter == "contains"){{ 'selected' }}@endif>contains</option>
-                                        <option value="equals" @if($search->filter == "equals"){{ 'selected' }}@endif>=</option>
+                                    {{--OCULTO--}}
+                                    <select id="filter" name="filter" class="hidden">
+                                        <option value="contains" @if($search->filter == "contains"){{ 'selected' }}@endif>Contém</option>
+                                        {{--<option value="equals" @if($search->filter == "equals"){{ 'selected' }}@endif>=</option>--}}
                                     </select>
                                     <div class="input-group col-md-12">
                                         <input type="text" class="form-control" placeholder="{{ __('voyager::generic.search') }}" name="s" value="{{ $search->value }}">

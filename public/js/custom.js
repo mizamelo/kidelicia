@@ -12,4 +12,10 @@ jQuery("input.telefone")
             element.mask("(99) 9999-9999?9");
         }
 });
+
+$(document).ready(function (){
+    var nav = $('.app-container');
+    nav.addClass('expanded');
+});
+
 console.log('CUstom Ok');
