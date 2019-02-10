@@ -69,9 +69,17 @@
                             <div class="form-group">
                                 <label for="role">Tipo de Usuário</label>
                                 <select name="role_id" class="form-control" id="role">
-
                                     <option value="3">Gestor</option>
                                     <option value="2">Vendedor</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select name="status" class="form-control" id="status">
+                                    <option selected value="@if(isset($dataTypeContent->status)){{ $dataTypeContent->status }}@endif">{{ $dataTypeContent->status }}</option>
+                                    <option value="ativo">Ativo</option>
+                                    <option value="inativo">Inativo</option>
                                 </select>
                             </div>
 

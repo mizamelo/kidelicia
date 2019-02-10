@@ -17,9 +17,15 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'admin'], function () {
+
     Route::get('/', function () {
-        return redirect('admin/pedidos');
+        return redirect()->route('/admin/pedidos');
     });
+
+    Route::get('/admin', function () {
+        return redirect()->route('/admin/pedidos');
+    });
+
     Voyager::routes();
 
 
