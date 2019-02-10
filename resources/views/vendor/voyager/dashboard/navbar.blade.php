@@ -7,11 +7,11 @@
             @section('breadcrumbs')
             <ol class="breadcrumb hidden-xs">
                 @if(count(Request::segments()) == 1)
-                    <li class="active"><i class="voyager-boat"></i> {{ __('voyager::generic.dashboard') }}</li>
+                    {{--<li class="active"><i class="voyager-boat"></i> {{ __('voyager::generic.dashboard') }}</li>--}}
                 @else
-                    <li class="active">
-                        <a href="{{ route('voyager.dashboard')}}"><i class="voyager-boat"></i> {{ __('voyager::generic.dashboard') }}</a>
-                    </li>
+                    {{--<li class="active">--}}
+                        {{--<a href="{{ route('voyager.dashboard')}}"><i class="voyager-boat"></i> {{ __('voyager::generic.dashboard') }}</a>--}}
+                    {{--</li>--}}
                 @endif
                 <?php $breadcrumb_url = url(''); ?>
                 @for($i = 1; $i <= count(Request::segments()); $i++)

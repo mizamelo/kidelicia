@@ -63,8 +63,8 @@
 
             <div class="login-container">
 
-                <p>{{ __('voyager::login.signin_below') }}</p>
-
+                {{--<p>{{ __('voyager::login.signin_below') }}</p>--}}
+                <p>Acesso ao painel</p>
                 <form action="{{ route('voyager.login') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group form-group-default" id="emailGroup">

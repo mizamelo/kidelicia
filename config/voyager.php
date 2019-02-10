@@ -124,14 +124,13 @@ return [
         /*
          * Select default language
          */
-        'default' => 'pt_BR',
+        'default' => 'pt-BR',
 
         /*
          * Select languages that are supported.
          */
         'locales' => [
-            'en',
-            'pt_BR',
+            'pt-BR'
         ],
     ],
 
@@ -153,7 +152,7 @@ return [
                 'icon_class' => 'voyager-person',
             ],
             'Home' => [
-                'route'        => '/',
+                'route'        => '/admin/pedidos',
                 'icon_class'   => 'voyager-home',
                 'target_blank' => true,
             ],
