@@ -16,7 +16,7 @@ class PedidoController extends BaseVoyagerBaseController
         $fields = $request->all();
 
         $validator = Validator::make($fields, [
-            'comprador' => 'string|max:255',
+            'comprador' => 'required|string|max:255',
             'telefone' => 'required|string|max:11',
             'id_usuario' => 'required|integer|max:255',
             'id_estabelecimento' => 'required|integer|max:255',
