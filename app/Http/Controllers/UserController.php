@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
+
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UserController extends Controller
@@ -23,7 +25,10 @@ class UserController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
-        return response()->json(compact('token'));
+        $User = Auth::user();
+
+
+        return response()->json(compact('token', 'User'));
     }
 
     public function register(Request $request)
