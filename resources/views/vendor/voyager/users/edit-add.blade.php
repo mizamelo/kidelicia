@@ -53,7 +53,7 @@
 
                             <div class="form-group">
                                 <label for="telefone">Telefone</label>
-                                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone"
+                                <input type="text" class="form-control telefone" id="telefone" name="telefone" placeholder="Telefone"
                                        value="@if(isset($dataTypeContent->telefone)){{ $dataTypeContent->telefone }}@endif">
                             </div>
 
@@ -85,19 +85,21 @@
 
                             @php
                             if (isset($dataTypeContent->locale)) {
-                                $selected_locale = $dataTypeContent->locale;
+                               // $selected_locale = $dataTypeContent->locale;
+                               $selected_locale = config('app.locale', 'pt_br');
                             } else {
-                                $selected_locale = config('app.locale', 'en');
+                                $selected_locale = config('app.locale', 'pt_br');
                             }
 
                             @endphp
-                            <div class="form-group">
+                            <div class="form-group hidden">
                                 <label for="locale">{{ __('voyager::generic.locale') }}</label>
                                 <select class="form-control select2" id="locale" name="locale">
-                                    @foreach (Voyager::getLocales() as $locale)
-                                    <option value="{{ $locale }}"
-                                    {{ ($locale == $selected_locale ? 'selected' : '') }}>{{ $locale }}</option>
-                                    @endforeach
+                                    <option value="pt_br" selected>pt_br</option>
+                                    {{--@foreach (Voyager::getLocales() as $locale)--}}
+                                    {{--<option value="{{ $locale }}"--}}
+                                    {{--{{ ($locale == $selected_locale ? 'selected' : '') }}>{{ $locale }}</option>--}}
+                                    {{--@endforeach--}}
                                 </select>
                             </div>
                         </div>

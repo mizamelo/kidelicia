@@ -1,17 +1,17 @@
-<div class="side-menu sidebar-inverse">
+<div class="side-menu sidebar-inverse expanded">
     <nav class="navbar navbar-default" role="navigation">
         <div class="side-menu-container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{ route('voyager.dashboard') }}">
+                <a class="navbar-brand" href="{{ route('voyager.pedidos.index') }}">
                     <div class="logo-icon-container">
                         <?php $admin_logo_img = Voyager::setting('admin.icon_image', ''); ?>
                         @if($admin_logo_img == '')
-                            <img src="{{ voyager_asset('images/logo-icon-light.png') }}" alt="Logo Icon">
+                            {{--<img src="{{ voyager_asset('images/logo-icon-light.png') }}" alt="Logo Icon">--}}
                         @else
-                            <img src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon">
+                            {{--<img src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon">--}}
                         @endif
                     </div>
-                    <div class="title">{{Voyager::setting('admin.title', 'VOYAGER')}}</div>
+                    <div style="margin-top: 0; position: absolute; margin-left: 10px;" class="title">{{Voyager::setting('admin.title', 'VOYAGER')}}</div>
                 </a>
             </div><!-- .navbar-header -->
 
