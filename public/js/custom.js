@@ -47,10 +47,28 @@ $(document).ready(function (){
             console.log(values);
 
             doc.text("Estabelecimento: " + values["input1"],10,10);
-            doc.text("Endereço: " + row["endereco"], 10, 14);
-            doc.text("Endereço: " + row["numero"], 40, 14);
-            // doc.text("Company: " + row["company"], 10, 22);
 
+            doc.text("Endereço: " + values["endereco"], 10, 18);
+            doc.text("Numero: " + values["numero"], 10, 22);
+            doc.text("Complemento: " + values["complemento"], 10, 26);
+            doc.text("Bairo: " + values["bairro"], 10, 30);
+            doc.text("Cidade: " + values["cidade"], 10, 34);
+
+            doc.text("Comprador: " + values["input3"], 10, 40);
+            doc.text("Telefone: " + values["input7"], 10, 44);
+
+
+            var splitDescricao = doc.splitTextToSize(values['input4'], 180);
+            doc.text(10, 52, splitDescricao);
+
+            doc.text("Data do Pedido: " + values["input9"], 10, 162);
+            doc.text("Data da Entrega: " + values["input10"], 10, 166);
+
+
+            doc.text("Assinatura do comprador: ________________________________________________________________ ", 10, 190);
+
+
+            // doc.text("Company: " + row["company"], 10, 22);
             //doc.save("a4.pdf");
 
             doc.autoPrint();
