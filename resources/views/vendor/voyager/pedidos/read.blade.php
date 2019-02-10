@@ -24,10 +24,10 @@
             {{ __('voyager::generic.return_to_list') }}
         </a>
 
-        <a href="{{ route('gerar_comanda') ."/". $dataTypeContent->getKey() }}" class="btn btn-inverse">
+        <button type="button" class="btn btn-inverse" data-toggle="modal" data-target="#gerarComandaModal">
             <span class="glyphicon glyphicon-pencil"></span>&nbsp;
             Gerar Comanda
-        </a>
+        </button>
     </h1>
     @include('voyager::multilingual.language-selector')
 @stop
@@ -179,3 +179,28 @@
 
     </script>
 @stop
+
+
+<!-- Modal -->
+<div class="modal fade" id="gerarComandaModal" tabindex="-1" role="dialog" aria-labelledby="gerarComandaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <a href="{{ route('gerar_comanda') ."/". $dataTypeContent->getKey() }}" class="btn btn-inverse">
+                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;
+                    Gerar Comanda
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
