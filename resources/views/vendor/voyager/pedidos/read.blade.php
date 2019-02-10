@@ -183,24 +183,114 @@
 
 <!-- Modal -->
 <div class="modal fade" id="gerarComandaModal" tabindex="-1" role="dialog" aria-labelledby="gerarComandaModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div  class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <a href="{{ route('gerar_comanda') ."/". $dataTypeContent->getKey() }}" class="btn btn-inverse">
-                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;
-                    Gerar Comanda
-                </a>
-            </div>
+            <form  id="gerar_comanda">
+                <div class="modal-body">
+                        {{ method_field('POST') }}
+                        {{ csrf_field() }}
+                    <input  type="hidden" value="{{$dataTypeContent->getKey() }}" name="pedido_id">
+
+
+                    @foreach($dataType->readRows as $key => $row)
+
+                        @if($row->type == 'relationship')
+                            <div class="d-flex col-auto">
+                                <input type="hidden" class="form-control" id="{{ "input" . $key }}" name="{{ "input" . $key }}" value="@include('voyager::formfields.relationship', ['view' => 'read', 'options' => $row->details])">
+                            </div>
+                        @else
+                            <div class="d-flex col-auto">
+                                <input type="hidden" class="form-control" id="{{ "input" . $key }}" name="{{ "input" . $key }}" value="{{ $dataTypeContent->{$row->field} }}">
+                            </div>
+
+                        @endif
+
+
+                    @endforeach
+
+                    <div class="form-group">
+                        <label for="cidade">Cidade</label>
+                        <input type="cidade" class="form-control" id="cidade" name="cidade" placeholder="Cidade" value="" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="bairro">Bairro</label>
+                        <input type="bairro" class="form-control" id="bairro" name="bairro" placeholder="Bairro" value="" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="endereco">Endereço</label>
+                        <input type="endereco" class="form-control" id="endereco" name="endereco" placeholder="Endereço" value="" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Número</label>
+                        <input type="numero" class="form-control" id="numero" name="numero" placeholder="Número" value="" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="complemento">Complemento</label>
+                        <input type="complemento" class="form-control" id="complemento" name="complemento" placeholder="Complemento" value="" required="required">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-inverse">
+                        <span class="glyphicon glyphicon-pencil"></span>&nbsp;
+                        Gerar Comanda
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="modalPDF" tabindex="-1" role="dialog" aria-labelledby="modalPDF" aria-hidden="true">
+    <div  class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                <div class="modal-body" id="#comandaPdfBody">
+                    <div class="flex-row">
+                        @foreach($dataType->readRows as $key => $row)
+
+                            @if($row->type == 'relationship')
+
+                                <div class="d-flex col-auto">
+                                    <p><b>{{ $row->display_name }}</b></p>
+                                    <p> @include('voyager::formfields.relationship', ['view' => 'read', 'options' => $row->details])</p>
+                                </div>
+
+                            @else
+                                <div class="d-flex col-auto">
+                                    <p><b>{{ $row->display_name }}</b></p>
+                                    <p>{{ $dataTypeContent->{$row->field} }}</p>
+                                </div>
+
+                            @endif
+
+
+                        @endforeach
+                    </div>
+
+
+                </div>
+                <div id="editor"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button id="printPDF" class="btn btn-inverse">
+                        <span class="glyphicon glyphicon-pencil"></span>&nbsp;
+                        Baixar PDF
+                    </button>
+                </div>
+        </div>
+    </div>
+</div>
+
 
