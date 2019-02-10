@@ -8,5 +8,7 @@ use TCG\Voyager\Http\Controllers\VoyagerBaseController as BaseVoyagerBaseControl
 
 class EstabelecimentoController extends BaseVoyagerBaseController
 {
-    //
+    public function new_estabelecimento(){
+        return response()->json(['code' => 0 ,'message' => 'rota ok'], 200);
+    }
 }
