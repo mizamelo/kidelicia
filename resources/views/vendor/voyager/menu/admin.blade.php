@@ -1,5 +1,5 @@
 <ol class="dd-list">
-XXXXX
+
 @foreach ($items as $item)
 
     <li class="dd-item" data-id="{{ $item->id }}">

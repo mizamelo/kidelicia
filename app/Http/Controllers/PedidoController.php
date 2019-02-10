@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Estabelecimento;
 use App\Pedido;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,10 +19,11 @@ class PedidoController extends BaseVoyagerBaseController
             'comprador' => 'string|max:255',
             'telefone' => 'required|string|max:11',
             'id_usuario' => 'required|integer|max:255',
+            'id_estabelecimento' => 'required|integer|max:255',
             'descricao_pedido' => 'required|string|max:1000',
             'valor_pedido' => 'required|numeric|max:10',
             'data_emissao_pedido' => 'required|date',
-            'data_entrega_pedido'=> 'date',
+            'data_entrega_pedido'=> 'required|date',
             'status_pedido' => 'required|string|max:255',
         ]);
 
@@ -40,9 +42,7 @@ class PedidoController extends BaseVoyagerBaseController
         if($estabelecimento->save()){
             return response()->json(config('status.0'));
         }
-
-
-
-
     }
+
+
 }

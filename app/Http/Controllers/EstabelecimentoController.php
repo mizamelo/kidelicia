@@ -42,8 +42,12 @@ class EstabelecimentoController extends BaseVoyagerBaseController
             return response()->json(config('status.0'));
         }
 
+    }
 
+    public function estabelecimentos(){
+        $data = config('status.0');
+        $data['estabelecimentos'] = Estabelecimento::all();
 
-
+        return response()->json($data, 200);
     }
 }
