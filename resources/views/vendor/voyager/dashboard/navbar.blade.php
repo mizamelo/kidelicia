@@ -36,7 +36,8 @@
 
                 <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button" aria-expanded="false">
                     {{--<img src="{{ $user_avatar }}" class="profile-img">--}}
-                    <i class="icon voyager-list"></i>
+
+                    <h6>{{ Auth::user()->name }} &nbsp;<i class="icon voyager-person"></i></h6>
                     {{--TEMPORARIO NO LUGAR DO AVATAR--}}
                      {{--<span class="caret"></span>--}}
                 </a>
