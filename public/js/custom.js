@@ -56,17 +56,19 @@ $(document).ready(function (){
 
             doc.text("Comprador: " + values["input3"], 10, 40);
             doc.text("Telefone: " + values["input7"], 10, 44);
-            doc.text("________________________Descrição_______________________", 10, 48);
+            doc.text("_________________________Descrição________________________", 10, 48);
 
             var splitDescricao = doc.splitTextToSize(values['input4'], 180);
-            doc.text(10, 52, splitDescricao);
+            doc.text(10, 56, splitDescricao);
 
 
-            doc.text("Data do Pedido: " + values["input9"], 10, 132);
-            doc.text("Data da Entrega: " + values["input10"], 10, 136);
-            doc.text("__________________________________________________________", 10, 140);
+            doc.text("__________________________________________________________", 10, 132);
 
-            doc.text("Assinatura do comprador: _________________________________", 10, 144);
+            doc.text("Data do Pedido: " + values["input9"], 10, 138);
+            doc.text("Data da Entrega: " + values["input10"], 10, 142);
+
+
+            doc.text("Assinatura do comprador: _____________________________________", 10, 148);
 
 
             // doc.text("Company: " + row["company"], 10, 22);
