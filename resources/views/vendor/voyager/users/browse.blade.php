@@ -5,16 +5,16 @@
 @section('page_header')
     <div class="container-fluid">
         {{--<h1 class="page-title">--}}
-            {{--<i class="{{ $dataType->icon }}"></i> {{ $dataType->display_name_plural }}--}}
+        {{--<i class="{{ $dataType->icon }}"></i> {{ $dataType->display_name_plural }}--}}
         {{--</h1>--}}
-         @can('add', app($dataType->model_name))
+        @can('add', app($dataType->model_name))
             <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success btn-add-new">
                 <i class="voyager-plus"></i> <span>{{ __('voyager::generic.add_new') }}</span>
             </a>
         @endcan
-         {{--@can('delete', app($dataType->model_name))--}}
-            {{--@include('voyager::partials.bulk-delete')--}}
-        {{--@endcan--}}
+        @can('delete', app($dataType->model_name))
+            @include('voyager::partials.bulk-delete')
+        @endcan
         @can('edit', app($dataType->model_name))
             @if(isset($dataType->order_column) && isset($dataType->order_display_column))
                 <a href="{{ route('voyager.'.$dataType->slug.'.order') }}" class="btn btn-primary">
@@ -36,17 +36,14 @@
                         @if ($isServerSide)
                             <form method="get" class="form-search">
                                 <div id="search-input">
-                                    {{--OCULTO--}}
-                                    <select id="search_key" name="key" class="hidden">
-                                            <option value="name" selected>Nome</option>
+                                    <select id="search_key" name="key">
                                         @foreach($searchable as $key)
-                                            {{--<option value="{{ $key }}" @if($search->key == $key || $key == $defaultSearchKey){{ 'selected' }}@endif>{{ ucwords(str_replace('_', ' ', $key)) }}</option>--}}
+                                            <option value="{{ $key }}" @if($search->key == $key || $key == $defaultSearchKey){{ 'selected' }}@endif>{{ ucwords(str_replace('_', ' ', $key)) }}</option>
                                         @endforeach
                                     </select>
-                                    {{--OCULTO--}}
-                                    <select id="filter" name="filter" class="hidden">
-                                        <option value="contains" @if($search->filter == "contains"){{ 'selected' }}@endif>Contém</option>
-                                        {{--<option value="equals" @if($search->filter == "equals"){{ 'selected' }}@endif>=</option>--}}
+                                    <select id="filter" name="filter">
+                                        <option value="contains" @if($search->filter == "contains"){{ 'selected' }}@endif>contains</option>
+                                        <option value="equals" @if($search->filter == "equals"){{ 'selected' }}@endif>=</option>
                                     </select>
                                     <div class="input-group col-md-12">
                                         <input type="text" class="form-control" placeholder="{{ __('voyager::generic.search') }}" name="s" value="{{ $search->value }}">
@@ -62,35 +59,35 @@
                         <div class="table-responsive">
                             <table id="dataTable" class="table table-hover">
                                 <thead>
-                                    <tr>
-                                        @can('delete',app($dataType->model_name))
-                                            <th>
-                                                <input type="checkbox" class="select_all">
-                                            </th>
-                                        @endcan
-                                        @foreach($dataType->browseRows as $row)
+                                <tr>
+                                    @can('delete',app($dataType->model_name))
+                                        <th>
+                                            <input type="checkbox" class="select_all">
+                                        </th>
+                                    @endcan
+                                    @foreach($dataType->browseRows as $row)
                                         <th>
                                             @if ($isServerSide)
                                                 <a href="{{ $row->sortByUrl($orderBy, $sortOrder) }}">
-                                            @endif
-                                            {{ $row->display_name }}
-                                            @if ($isServerSide)
-                                                @if ($row->isCurrentSortField($orderBy))
-                                                    @if ($sortOrder == 'asc')
-                                                        <i class="voyager-angle-up pull-right"></i>
-                                                    @else
-                                                        <i class="voyager-angle-down pull-right"></i>
                                                     @endif
-                                                @endif
+                                                    {{ $row->display_name }}
+                                                    @if ($isServerSide)
+                                                        @if ($row->isCurrentSortField($orderBy))
+                                                            @if ($sortOrder == 'asc')
+                                                                <i class="voyager-angle-up pull-right"></i>
+                                                            @else
+                                                                <i class="voyager-angle-down pull-right"></i>
+                                                            @endif
+                                                        @endif
                                                 </a>
                                             @endif
                                         </th>
-                                        @endforeach
-                                        <th class="actions text-right">{{ __('voyager::generic.actions') }}</th>
-                                    </tr>
+                                    @endforeach
+                                    <th class="actions text-right">{{ __('voyager::generic.actions') }}</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($dataTypeContent as $data)
+                                @foreach($dataTypeContent as $data)
                                     <tr>
                                         @can('delete',app($dataType->model_name))
                                             <td>
@@ -137,7 +134,7 @@
                                                             <span class="label label-primary">{{ $row->details->off }}</span>
                                                         @endif
                                                     @else
-                                                    {{ $data->{$row->field} }}
+                                                        {{ $data->{$row->field} }}
                                                     @endif
                                                 @elseif($row->type == 'color')
                                                     <span class="badge badge-lg" style="background-color: {{ $data->{$row->field} }}">{{ $data->{$row->field} }}</span>
@@ -186,7 +183,7 @@
                                             @endforeach
                                         </td>
                                     </tr>
-                                    @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -237,9 +234,9 @@
 @stop
 
 @section('css')
-@if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
-    <link rel="stylesheet" href="{{ voyager_asset('lib/css/responsive.dataTables.min.css') }}">
-@endif
+    @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
+        <link rel="stylesheet" href="{{ voyager_asset('lib/css/responsive.dataTables.min.css') }}">
+    @endif
 @stop
 
 @section('javascript')
@@ -249,8 +246,8 @@
     @endif
     <script>
         $(document).ready(function () {
-            @if (!$dataType->server_side)
-                var table = $('#dataTable').DataTable({!! json_encode(
+                @if (!$dataType->server_side)
+            var table = $('#dataTable').DataTable({!! json_encode(
                     array_merge([
                         "order" => $orderColumn,
                         "language" => __('voyager::datatable'),
@@ -259,17 +256,17 @@
                     config('voyager.dashboard.data_tables', []))
                 , true) !!});
             @else
-                $('#search-input select').select2({
-                    minimumResultsForSearch: Infinity
-                });
+            $('#search-input select').select2({
+                minimumResultsForSearch: Infinity
+            });
             @endif
 
             @if ($isModelTranslatable)
-                $('.side-body').multilingual();
-                //Reinitialise the multilingual features when they change tab
-                $('#dataTable').on('draw.dt', function(){
-                    $('.side-body').data('multilingual').init();
-                })
+            $('.side-body').multilingual();
+            //Reinitialise the multilingual features when they change tab
+            $('#dataTable').on('draw.dt', function(){
+                $('.side-body').data('multilingual').init();
+            })
             @endif
             $('.select_all').on('click', function(e) {
                 $('input[name="row_id"]').prop('checked', $(this).prop('checked'));
