@@ -212,6 +212,7 @@ return [
     'additional_js' => [
         'js/custom.js',
         'js/jspdf.min.js',
+        'js/moment-with-locales.min.js',
     ],
 
     'googlemaps' => [

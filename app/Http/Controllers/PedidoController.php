@@ -21,7 +21,7 @@ class PedidoController extends BaseVoyagerBaseController
             'id_usuario' => 'required|integer|max:255',
             'id_estabelecimento' => 'required|integer|max:255',
             'descricao_pedido' => 'required|string|max:1000',
-            'valor_pedido' => 'required|numeric|max:10',
+            'valor_pedido' => 'required|max:10',
             'data_emissao_pedido' => 'required|date',
             'data_entrega_pedido'=> 'required|date',
             'status_pedido' => 'required|string|max:255',
